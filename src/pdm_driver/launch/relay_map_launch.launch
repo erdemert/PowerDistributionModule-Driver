@@ -1,0 +1,9 @@
+<launch>
+<node name="pdm_driver_node" pkg="pdm_driver" type="pdm_driver" respawn="false" output="screen">
+    <rosparam file="$(find pdm_driver)/config/relay_map.yaml" />
+    <param name="url" type="string" value="192.168.1.4" />
+    <param name="port" type="string" value="80" /> 
+</node>
+
+
+ </launch>

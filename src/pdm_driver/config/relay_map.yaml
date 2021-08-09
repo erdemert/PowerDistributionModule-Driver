@@ -1,0 +1,4 @@
+relay_map:
+    LIDAR_TOP: 12
+    RADAR_FC: 1
+    RADAR_FR: 6
