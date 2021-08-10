@@ -1,18 +1,18 @@
 # PowerDistributionModule-Driver
 Driver for the microprocessor HW-584.
 
-Power Distribution Module Driver
+#Power Distribution Module Driver
 This project is coded to drive a 16 port network relay switch, HW-584. Click
 [here](http://myosuploads3.banggood.com/products/20190218/20190218204717protocol.pdf) to
 see the documentation of the switch.
 As a beginner tip, HW-584 is a network control switch with only ethernet port. Therefore, all the
 coding is done on server requests. Spesifically on GET requests.
-Dependencies
+#Dependencies
 Make sure that CURL library and ROS are installed. The project is developed with ROS Melodic.
 Project also may require you to reprogram the switch from
 [this](https://github.com/nielsonm236/NetMod-ServerApp) link. During the development phase,
 we observed that default program of the switch is neither stable enough nor sufficient.
-Usage
+#Usage
 You need to build the project at least once to control the network control switch. Create a
 workspace and put src folder in. Then, go to the workspace and type "catkin_make". That's all,
 you are ready to use the driver. Do not forget to start the roscore, simply type "roscore". Run the
@@ -39,7 +39,7 @@ action: 1
 write_state: 65"
 Note that since action 1 is READ, write_state won't matter for the program. 
 38
-Structure
+#Structure
 In the main function a PdmDriverNode class object is created. This class calls the related callback
 function according to the requested service. Both callback functions call the main callback
 function, relayControlCallback. In this function, a HW584_Curl class object is created. HW584_Curl
@@ -47,7 +47,7 @@ implements an interface called HW584_Interface. This interface contains public f
 init, send_read_request and send_write_request. Note that if you need to avoid using CURL
 library, you can reimplement HW584_Interface class. If you do so, you need to change the private
 member of the PdmDriver class, HW584_Curl hw584_curl_obj to your own object.
-Bugs
+#Bugs
 We could not observe too many bugs but a small issue. Time to time if switch cannot draw
 enough power to perform the command, it may restart itself. That may cause your program to
 stop responding. This is a physical problem more than a bug. Make sure that all the connections
